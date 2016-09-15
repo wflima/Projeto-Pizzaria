@@ -1,0 +1,57 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pm="http://primefaces.org/mobile">
+
+  	
+     <h:head>
+		<title>Pedidos Cliente</title>
+	</h:head>
+ <body>
+   
+   
+ 		<p:breadCrumb>
+	<p:menuitem value="Categorias" url="#" />
+	<p:menuitem value="  HOME: *" url="Menu.jsf" />
+    <p:menuitem value="  Ir Para Menu De Pizza" url="IncluirPizza.jsf" />
+		</p:breadCrumb>
+ 	
+ 	<p:growl id="growl" showDetail="true" life="2000"/>
+ 	
+ 	<h:form id="formLista">
+ 
+ 		<p:panel header="Menu De Bebidas" closable="true" >
+ 	
+		<h:outputText value="Quantidade"/>
+			<p:inputText size="10" value="#{incluirBebidaBean.objBebida}"/> 
+		 
+		 <h:outputText value="Número Da Mesa: *"/>
+ 			<h:inputText size="10" value="#{incluirBebidaBean.objMesa}"/>
+				
+		<p:dataTable value="#{salvarBebidaBean.listartodasBebidas}" var="bebida" emptyMessage="Não existe pedido em espera">
+			<p:column headerText="ID">
+				<h:outputText value="#{bebida.id}" />
+			</p:column>
+			<p:column headerText="Nome">
+				<h:outputText value="#{bebida.descricao}" />
+			</p:column>
+			<p:column headerText="Descrição">
+				<h:outputText value="#{bebida.tipoBebida}" />
+			</p:column>
+			<p:column headerText="Preço">
+				<h:outputText value="#{bebida.preco}" />
+			</p:column>
+			<p:column headerText="">
+				<p:commandButton value="Enviar Pedido" ajax="false" action="#{incluirBebidaBean.incluirBebida(bebida)}"/>
+			</p:column>
+		</p:dataTable>
+		</p:panel>
+	</h:form>
+ </body>
+</html>

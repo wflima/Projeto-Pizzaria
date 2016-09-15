@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+ 	  xmlns:h="http://java.sun.com/jsf/html"
+ 	  xmlns:f="http://java.sun.com/jsf/core"
+ 	  xmlns:p="http://primefaces.org/ui"
+ 	  xmlns:pm="http://primefaces.org/mobile">
+
+		
+			<h:head>
+		<title>Menu</title>
+	
+		</h:head>
+<h:body>
+<h:form>  
+    <p:growl id="messages"/>
+ 
+    <p:menubar>
+        <p:submenu label="Tabelas Gerais" icon="ui-icon-document">
+            <p:submenu label="Cadastros" icon="ui-icon-contact">
+                <p:menuitem value="Cadastro De Pizza" url="Pizza.jsf" />
+                <p:menuitem value="Cadastro De Bebida" url="Bebida.jsf" />
+                <p:menuitem value="Cadastro De Funcionario" url="Funcionario.jsf" />     
+            </p:submenu>
+        </p:submenu>
+        <p:submenu label="Cozinha" icon="ui-icon-document">
+            <p:menuitem value="Pedidos Em Espera" url="Pedidos.jsf" icon="ui-icon-arrowreturnthick-1-w" />
+        </p:submenu>
+         <p:submenu label="Balcão" icon="ui-icon-document">
+            <p:menuitem value="Pedidos" url="PedidoBalcao.jsf" icon="ui-icon-arrowreturnthick-1-w" />
+        </p:submenu>
+         <p:submenu label="Atendimento" icon="ui-icon-document">
+            <p:menuitem value="Menu De Bebidas" url="IncluirBebida.jsf" icon="ui-icon-arrowreturnthick-1-w" />
+            <p:menuitem value="Menu De Pizza" url="IncluirPizza.jsf" icon="ui-icon-arrowreturnthick-1-w" />
+            <p:menuitem value="Pedidos Por Mesa" url="ListaDeMesas.jsf" icon="ui-icon-arrowreturnthick-1-w" />
+        </p:submenu>
+        
+          </p:menubar>
+
+	<center>
+		<h1>ZMAP</h1>
+	</center>
+	</h:form>
+</h:body>
+		
+</html>

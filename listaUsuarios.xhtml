@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pm="http://primefaces.org/mobile">
+
+ 
+ 
+   			<h:head>
+ 	<title>Lista De Usuarios</title>
+ 		</h:head>
+ 		
+ 		<body>
+ 		<p:breadCrumb>
+ 			<p:menuitem value="Voltar" url="#" />
+    		<p:menuitem value="Voltar Ao Menu De Opções" url="Index.jsf" />
+ 		</p:breadCrumb>
+ 		
+ 		 			<p:messages closable="true"/>
+ 							<h:form id="formLista">
+			<p:dataTable value="#{salvarUsuarioBean.listarTodosUsuarios}" var="usu" emptyMessage="Não existe informações">
+				<p:column headerText="Codigo">
+					<h:outputText value="#{usu.id}" />
+				</p:column>
+				<p:column headerText="Login">
+					<h:outputText value="#{usu.login}" />
+				</p:column>
+				<p:column headerText="Senha">
+					<h:outputText value="#{usu.senha}" />
+				</p:column>
+				<p:column headerText="Alterar Usuarios Ou Deletar !"> 
+					<p:commandButton value="Editar" icon="ui-icon-wrench" ajax="false" action="#{salvarUsuarioBean.prepararParaEditarUsuario(usu)}"/>
+					<p:commandButton value="Deletar" icon="ui-icon-trash" ajax="false" action="#{salvarUsuarioBean.removerUsuario(usu)}" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+ 		
+ 		</body>
+
+</html>

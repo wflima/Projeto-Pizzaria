@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">	
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pm="http://primefaces.org/mobile">
+
+		<h:head>
+ 			<title>Lista De Mesas</title>
+ 	   </h:head>
+			<body>	
+				<p:messages closable="true"/>
+					<h:form id="forPedido">
+						
+						<p:breadCrumb>
+							<p:menuitem value="Categorias" url="#" />
+							<p:menuitem value="  HOME: *" url="Menu.jsf" />
+    							<p:menuitem value="" />
+								</p:breadCrumb>	<p:panel header="Consulta Pedidos Por Mesa" closable="true">		
+							<p:panelGrid columns="2" styleClass="ui-responsive"> 
+							<h:outputText value="Informe O Numéro Da Mesa !"/>
+							<p:inputText required="true" requiredMessage="Infome o numero Da Mesa" value="#{pesquisarPedidoMesaBean.pedido.coMesa}">
+							</p:inputText>
+							
+							<p:commandButton value="Enviar" icon="ui-icon-disk" ajax="false" action="#{pesquisarPedidoMesaBean.pesquisarMesas}"/>
+							</p:panelGrid>
+						</p:panel>						
+					</h:form>	
+				
+				<h:form id="formLista">
+			<p:dataTable value="#{pesquisarPedidoMesaBean.listarTodosPedido}" var="pe" emptyMessage="Não existe Itens Pra Essa Mesa !">
+				<p:column headerText="Quantidade: *">
+					<h:outputText value="#{pe.qtdeProduto}" />
+				</p:column>
+				<p:column headerText="Mesa: *">
+					<h:outputText value="#{pe.coMesa}" />
+				</p:column>
+				
+				<p:column headerText="Bebidas: *">
+					<h:outputText value="#{pe.objBebida.descricao}" />
+				</p:column>
+
+				<p:column headerText="Preço: *">
+					<h:outputText value="#{pe.objBebida.preco}" />
+				</p:column>
+				
+				<p:column headerText="Encerrar Conta Da Mesa: *"> 
+				<p:commandButton value="Finalizar" icon="ui-icon-wrench" ajax="false" action="#{pesquisarPedidoMesaBean.removerMesa(pe)}"/>
+					
+				</p:column>
+			</p:dataTable>
+			</h:form>	 
+		</body>
+
+	
+</html>

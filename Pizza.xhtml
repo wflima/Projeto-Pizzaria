@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pm="http://primefaces.org/mobile">
+
+ <h:head>
+ 	<title>Pizza</title>
+ </h:head>
+		<body>
+			<p:messages closable ="true"/>
+			<h:form id="formCadastro">
+				<p:panel header="Cadastro De Pizza" closable="true" >
+				<p:panelGrid columns="2">
+				
+					<h:outputText value="Nome Da Pizza"/>
+				    <p:inputText required="true" requiredMessage="O campo Nome da pizza é obrigatório !" size="40"
+						value="#{salvarPizzaBen.pizza.nome}" >
+					<f:validateLength minimum="5" />
+					</p:inputText> 
+					
+					<h:outputText value="Descrição da Pizza"/> 
+					<p:inputText required="true" requiredMessage="O campo descrição é obrigatório !" size="40"
+					value="#{salvarPizzaBen.pizza.ingre_pizza}" >
+					<f:validateLength minimum="5" />
+					
+					</p:inputText> 
+					
+					<p:commandButton value="Salvar" icon="ui-icon-disk" ajax="false" action="#{salvarPizzaBen.salvarPizza}" />			
+				</p:panelGrid>
+				</p:panel>		
+			</h:form>
+			
+			<h:form id="voltar">
+				<p:commandButton icon="ui-icon-home" value="Home" ajax="false" action="Menu.xhtml" />
+			</h:form>
+			
+				<h:form id="formLista">
+			<p:dataTable value="#{salvarPizzaBen.listarTodasPizzas}" var="pizza" emptyMessage="Não existe informações">
+				<p:column headerText="ID">
+					<h:outputText value="#{pizza.id}" />
+				</p:column>
+				<p:column headerText="Nome">
+					<h:outputText value="#{pizza.nome}" />
+				</p:column>
+				<p:column headerText="Descrição">
+					<h:outputText value="#{pizza.ingre_pizza}" />
+				</p:column>
+				<p:column headerText="Operação">
+					<p:commandButton value="Editar" icon="ui-icon-wrench" ajax="false" action="#{salvarPizzaBen.prepararParaEditarPizza(pizza)}"/>
+					<p:commandButton value="Deletar" icon="ui-icon-trash" ajax="false" action="#{salvarPizzaBen.removerPizza(pizza)}" />
+				</p:column>
+			</p:dataTable>
+		</h:form>		
+		</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+  	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"      
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:o="http://omnifaces.org/ui">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>LOGIN</title>
+</h:head>
+<h:body>
+	<h:form id="formlogin">
+		<p:messages/>	
+		
+		<p:panelGrid columns="2">
+			<p:outputLabel value="Login:" />
+			<p:inputText value="#{cadastroLoginController.usuario.login}" id="login"/>		
+			
+			<p:outputLabel value="Senha:" />
+			<p:password value="#{cadastroLoginController.usuario.senha}" id="senha"/>
+		</p:panelGrid>
+		<p:commandButton id="btnlogar" value="Logar" action="#{cadastroLoginController.logar}"  update="@form"/>
+		<p:commandButton id="btnlimpar" value="Limpar" action ="#{cadastroLoginController.limpar}" update="@form"/>
+	</h:form>
+</h:body>
+</html>

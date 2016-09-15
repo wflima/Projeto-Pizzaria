@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pm="http://primefaces.org/mobile">
+	
+	 <h:head>
+ 	<title>Funcionarios</title>
+ 	</h:head>
+		<body>
+			<p:messages closable ="true"/>
+			<h:form id="formCadastro">
+				<p:panel header="Cadastro De Funcionários" closable="true" >
+				<p:panelGrid columns="4">
+				
+					<h:outputText value="Nome: *"/> 
+				    <p:inputText required="true" requiredMessage="O Nome é Obrigatorio !" 
+						value="#{salvarFuncionarioBean.funcionario.nome}" >
+					<f:validateLength minimum="5" />
+					</p:inputText> 
+					
+					<h:outputText value="Sexo: *" />
+						<p:selectOneMenu value="#{salvarFuncionarioBean.funcionario.sexo}">
+							<f:selectItem itemLabel="Selecione" itemValue="0"/>
+							<f:selectItem itemLabel="Masculino" itemValue="Masculino"/>
+							<f:selectItem itemLabel="Feminino" itemValue="Feminino"/>
+							<f:validateLength minimum="5" />
+						</p:selectOneMenu>
+					
+					<h:outputText value="Idade: * "/> 
+					<p:inputText required="true" requiredMessage="A Idade é Obrigatorio !" 
+					value="#{salvarFuncionarioBean.funcionario.idade}" >
+					<f:validateLength minimum="2" />
+					</p:inputText> 
+					
+					<h:outputText value="RG: *"/> 
+				    <p:inputMask required="true" requiredMessage=" Campo RG é Obrigatorio !" 
+						value="#{salvarFuncionarioBean.funcionario.rg}" />
+					
+					
+					<h:outputText value="CPF: *"/> 
+				    <p:inputMask required="true" requiredMessage=" Campo CPF é Obrigatorio !"
+				    value="#{salvarFuncionarioBean.funcionario.cpf}" mask="999.999.999-99"/>
+					
+		
+					
+					<h:outputText value="Endereço: *"/> 
+				    <p:inputText required="true" requiredMessage=" O Endereço Do Funcionário é Obrigatorio !" 
+						value="#{salvarFuncionarioBean.funcionario.endereço}" >
+					<f:validateLength minimum="5" />
+					</p:inputText>
+					
+					<h:outputText value="Data de admissão: *"/>
+					  
+					<p:inputMask mask="99/99/9999" value="#{salvarFuncionarioBean.funcionario.dataAdmicao}"
+					 required="true" requiredMessage="Data de Adimissão é Obrigatorio"> 
+					 <f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" />
+					  </p:inputMask>
+					
+					<p:commandButton value="Salvar" icon="ui-icon-disk" ajax="false" action="#{salvarFuncionarioBean.salvarFuncionario}" />
+					</p:panelGrid>
+				</p:panel>
+			</h:form>
+				
+			 <h:form id="voltar">
+				<p:commandButton value="Home" icon="ui-icon-home" ajax="false" action="Menu.xhtml" />
+			</h:form>
+			
+				<h:form id="formLista">
+			<p:dataTable value="#{salvarFuncionarioBean.listarTodosFuncionarios}" var="func" emptyMessage="Não existe informações">
+				<p:column headerText="Código">
+					<h:outputText value="#{func.id}" />
+				</p:column>
+				<p:column headerText="Nome do Funcionario">
+					<h:outputText value="#{func.nome}" />
+				</p:column>
+				<p:column headerText="Idade">
+					<h:outputText value="#{func.idade}" />
+				</p:column>
+				<p:column headerText="Sexo">
+					<h:outputText value="#{func.sexo}" />
+				</p:column>
+				<p:column headerText="RG">
+					<h:outputText value="#{func.rg}" />
+				</p:column>
+				<p:column headerText="CPF">
+					<h:outputText value="#{func.cpf}" />
+				</p:column>
+				<p:column headerText="Endereço">
+					<h:outputText value="#{func.endereço}" />
+				</p:column>
+				
+				<p:column headerText="Data de Adimissão">
+					<h:outputText value="#{func.dataAdmicao}">
+						<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" />
+					</h:outputText>
+				</p:column>
+				
+				<p:column headerText="Operação">
+					<p:commandButton value="Editar" icon="ui-icon-wrench" ajax="false" action="#{salvarFuncionarioBean.prepararParaEditarFuncionario(func)}"/>
+					<p:commandButton value="Deletar" icon="ui-icon-trash" ajax="false" action="#{salvarFuncionarioBean.removerFuncionario(func)}" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+		
+		</body>
+	 
+
+</html>

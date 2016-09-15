@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pm="http://primefaces.org/mobile">
+	
+		
+		
+	<h:head>
+ 	<title>Bebidas</title>
+ 	</h:head>
+		<body>
+			<p:messages closable="true"/>
+			<h:form id="formCadastro">
+				<p:panel header="Cadastro De Bebidas" closable="true" >
+				<p:panelGrid  columns="2" styleClass="ui-responsive">
+				
+					<h:outputText value="Nome da Bebida"/> 
+				    <p:inputText required="true" requiredMessage="O campo Nome da bebida é obrigatório !" 
+						value="#{salvarBebidaBean.bebida.descricao}" >
+					<f:validateLength minimum="2" />
+					</p:inputText> 
+					
+					<h:outputText value="Tipo de Bebida"/> 
+				    <p:inputText required="true" requiredMessage="O tipo de Bebida é obrigatório !" 
+						value="#{salvarBebidaBean.bebida.tipoBebida}" >
+					<f:validateLength minimum="2" />
+					</p:inputText> 
+					
+					<h:outputText value="Preço "/> 
+					<p:inputText required="true" requiredMessage="O Preço deve ser Informado !" 
+					value="#{salvarBebidaBean.bebida.preco}" >
+					<f:validateLength minimum="1" />
+					</p:inputText> 
+					
+					<p:commandButton value="Salvar" icon="ui-icon-disk" ajax="false" action="#{salvarBebidaBean.salvarBebida}" />					
+				</p:panelGrid>
+				</p:panel>
+							
+				</h:form>
+				
+				<h:form id="Voltar">
+			<p:commandButton icon="ui-icon-home" value="Home" ajax="false" action="Menu.xhtml" />
+				</h:form>
+				
+				<h:form id="formLista">
+			<p:dataTable value="#{salvarBebidaBean.listartodasBebidas}" var="bebida" emptyMessage="Não existe informações">
+				<p:column headerText="ID">
+					<h:outputText value="#{bebida.id}" />
+				</p:column>
+				<p:column headerText="Nome das Bebidas">
+					<h:outputText value="#{bebida.descricao}" />
+				</p:column>
+				<p:column headerText="Tipo De Bebidas">
+					<h:outputText value="#{bebida.tipoBebida}" />
+				</p:column>
+				<p:column headerText="Preço">
+					<h:outputText value="#{bebida.preco}" />
+				</p:column>
+				<p:column headerText="Operação"> 
+					<p:commandButton value="Editar" icon="ui-icon-wrench" ajax="false" action="#{salvarBebidaBean.prepararParaEditar(bebida)}"/>
+					<p:commandButton value="Deletar" icon="ui-icon-trash" ajax="false" action="#{salvarBebidaBean.removerBebida(bebida)}" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+			
+		</body>
+
+</html>

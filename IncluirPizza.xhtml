@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+    
+    
+<html 	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:p="http://primefaces.org/ui"
+		xmlns:pm="http://primefaces.org/mobile">
+
+
+  		<h:head>
+		<title>Pedidos Cliente</title>
+		</h:head>
+ <body>
+    	<p:breadCrumb>
+	<p:menuitem value="Categorias" url="#" />
+	<p:menuitem value="  HOME: *" url="Menu.jsf" />
+    <p:menuitem value="Ir Para Menu De Bebidas" url="IncluirBebida.jsf" />
+		</p:breadCrumb>	
+ 	
+ 	<p:growl id="growl" showDetail="true" life="2000"/>
+ 	
+ 	<h:form id="formLista">
+ 		<p:panel header="Menu De Pizzas" closable="true" >
+ 		
+ 			<h:outputText value="Quantidade: *"/>
+ 			<p:inputText size="10" value="#{incluirPizzaBean.objPizza}"/>
+
+ 			
+ 			<h:outputText value="Número Da Mesa: *"/>
+ 			<p:inputText size="10" value="#{incluirPizzaBean.objMesa}"/>
+ 			
+ 			
+			<p:dataTable value="#{salvarPizzaBen.listarTodasPizzas}" var="pizza" emptyMessage="Não existe pizza cadastrada">
+				<p:column headerText="ID">
+					<h:outputText value="#{pizza.id}" />
+				</p:column>
+				<p:column headerText="Nome">
+					<h:outputText value="#{pizza.nome}" />
+				</p:column>
+				<p:column headerText="Descrição">
+					<h:outputText value="#{pizza.ingre_pizza}" />
+				</p:column>
+				<p:column headerText="Selecione Sua Pizza">
+				
+				
+					<p:commandButton value="Enviar" ajax="false" action="#{incluirPizzaBean.incluirPizza(pizza)}"/>					
+					
+				</p:column>
+			</p:dataTable>
+			</p:panel>
+		</h:form>
+ 
+ </body>
+</html>

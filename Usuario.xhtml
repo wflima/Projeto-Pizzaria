@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pm="http://primefaces.org/mobile">
+	
+
+
+		<h:head>
+ 	<title>Usuario</title>
+ 		</h:head>
+		<body>
+		
+			<p:breadCrumb>
+ 			<p:menuitem value="Voltar" url="#" />
+    		<p:menuitem value="Voltar Ao Menu De Opções" url="Index.jsf" />
+ 			</p:breadCrumb>
+		
+			<p:messages closable="true"/>
+			<h:form id="formCadastro">
+				<p:panel header="Cadastro De Usuario" closable="true" >
+				<p:panelGrid  columns="2" styleClass="ui-responsive">
+				
+					<h:outputText value=" Loguin  "/> 
+				    <p:inputText required="true" requiredMessage="Campo obrigatório !" 
+						value="#{salvarUsuarioBean.usuario.login}" >
+					<f:validateLength minimum="5" />
+					</p:inputText> 
+					
+					<h:outputText value="Senha"/> 
+				    <p:inputText required="true" requiredMessage="Campo obrigatório !" 
+						value="#{salvarUsuarioBean.usuario.senha}" >
+					<f:validateLength  minimum="5"/>
+					</p:inputText>  					
+					<p:commandButton value="Salvar" icon="ui-icon-disk" ajax="false" action="#{salvarUsuarioBean.salvarUsuario}"/>					
+				</p:panelGrid>
+				</p:panel>
+							
+				</h:form>
+				
+				</body>
+
+			</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+  
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pm="http://primefaces.org/mobile">
+	
+	
+	 
+    
+    	<h:head>
+    	<meta http-equiv="refresh" content="10"/>
+		<title>Pedidos</title>
+		</h:head>
+	<body>
+	    	<p:breadCrumb>
+					<p:menuitem value="Categorias" url="#" />
+					<p:menuitem value="HOME: *" url="Menu.jsf"/>
+   					<p:menuitem value="Atualizar: *" url="Pedidos.jsf"/>
+				</p:breadCrumb>
+		<p:growl id="growl" showDetail="true" life="8000"/>		
+		<h:form id="formLista">
+			<p:dataTable value="#{alteraStatusPedidoBean.listarTodosPedidos}" var="pedido" emptyMessage="Não Tem Pedidos a Espera !">
+				
+				<p:column headerText="Código">
+					<h:outputText value="#{pedido.id}" />
+				</p:column>
+			
+				<p:column headerText="Produto">
+					<h:outputText value="#{pedido.descricao}" />
+				</p:column>
+				<p:column headerText="Quantidade">
+					<h:outputText value="#{pedido.qtdeProduto}" />
+				</p:column>
+				<p:column headerText="Mesa">
+					<h:outputText value="#{pedido.coMesa}" />
+				</p:column>
+				<p:column headerText="Status">
+					<h:outputText value="#{pedido.status}" />
+				</p:column>
+				<p:column headerText="Operação">
+					<p:commandButton value="Finalizar" ajax="false" action="#{alteraStatusPedidoBean.alterarPedido(pedido)}"/>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+
+		</body>
+
+</html>
